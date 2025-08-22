@@ -5,15 +5,28 @@ import "testing"
 func TestHello(t *testing.T) {
 	// Subtest to test regular functioning of Hello
 	t.Run("saying hello to people", func(t *testing.T) {
-		got := Hello("Cheems")
+		got := Hello("Cheems", "")
 		want := "Hello, Cheems"
 
 		assertCorrectMessage(t, got, want)
 	})
 	// Subtest to test empty strings in Hello
 	t.Run("say 'Hello, World' when an empty string is supplied", func(t *testing.T) {
-		got := Hello("")
+		got := Hello("", "")
 		want := "Hello, World"
+
+		assertCorrectMessage(t, got, want)
+	})
+
+	t.Run("in Spanish", func(t *testing.T) {
+		got := Hello("Elodie", "Spanish")
+		want := "Hola, Elodie"
+		assertCorrectMessage(t, got, want)
+	})
+
+	t.Run("in French", func(t *testing.T) {
+		got := Hello("Frank", "French")
+		want := "Bonjour, Frank"
 
 		assertCorrectMessage(t, got, want)
 	})
