@@ -8,6 +8,6 @@ import (
 )
 
 func main() {
-	handler := http.HandlerFunc(server.PlayerServer)
-	log.Fatal(http.ListenAndServe(":5000", handler))
+	svr := &server.PlayerServer{&InMemoryPlayerStore{}}
+	log.Fatal(http.ListenAndServe(":5000", svr))
 }
